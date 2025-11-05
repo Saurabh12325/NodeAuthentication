@@ -1,7 +1,7 @@
 import e from "express";
 import mongoose from "mongoose";
 import validator from "validator";
-import isEmail from "validator/lib/isEmail";
+
 
 
 const otpsSchema = new mongoose.Schema({
