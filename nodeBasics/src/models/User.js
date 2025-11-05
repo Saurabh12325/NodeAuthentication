@@ -40,6 +40,8 @@ const userSchema = new mongoose.Schema({
     },
      isVerified: { type: Boolean, default: false },
     otps: otpsSchema,
+     refreshToken: { type: String }
     
         
-})
+}, { timestamps: true })
+export const User = mongoose.model('User', userSchema);
