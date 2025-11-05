@@ -3,12 +3,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import http from "http";
 import { Server as SocketIOServer } from "socket.io";
-import { connectDB } from "./src/Services/Controller/config/db.js";
-import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import { errorHandler } from "./middleware/errorHandler.js";
+import connectDB from "./src/Config/db.js";
+// import authRoutes from "./src/routes/authRoutes.js";
+// import userRoutes from "./src/routes/userRoutes.js";
+// import errorHandler from "./src/middleware/errorHandler.js";
 import passport from "passport";
-import { configurePassport } from "./utils/passportConfig.js";
+// import { configurePassport } from "./utils/passportConfig.js";
 
 
 dotenv.config();
@@ -31,16 +31,16 @@ io.on('connection', (socket) => {
 
 app.use(cors());
 app.use(express.json());
-app.use(passport.initialize());
-configurePassport(passport);
+// app.use(passport.initialize());
+// configurePassport(passport);
 
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
+// app.use('/api/auth', authRoutes);
+// app.use('/api/users', userRoutes);
 
 
-// Global error handler
-app.use(errorHandler);
+// Global error handler2
+// app.use(errorHandler);
 
 
 const PORT = process.env.PORT || 5000;
