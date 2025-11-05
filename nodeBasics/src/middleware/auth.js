@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import { User } from '../models/User.js';
 
-export const authenticate = async (req,res) => {
+export const authenticate = async (req,res,next) => {
     try{
         const header = req.header('Authorization');
         if(!header || !header.startsWith('Bearer ')){
@@ -16,6 +16,8 @@ export const authenticate = async (req,res) => {
         }
         req.user = user;
         next();
+
+
     }catch(err){
         console.log(err);
          return res.status(401).json({ message: 'Invalid or expired token' });

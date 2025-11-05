@@ -6,7 +6,7 @@ import { Server as SocketIOServer } from "socket.io";
 import connectDB from "./src/Config/db.js";
 import authRoutes from "./src/routes/authRoutes.js";
 // import userRoutes from "./src/routes/userRoutes.js";
-// import errorHandler from "./src/middleware/errorHandler.js";
+import errorHandler from "./src/middleware/errorHandler.js";
 import passport from "passport";
 // import { configurePassport } from "./utils/passportConfig.js";
 
@@ -31,15 +31,15 @@ io.on('connection', (socket) => {
 
 app.use(cors());
 app.use(express.json());
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());/
+// app.use(passport.session());
 
 app.use('/api/auth', authRoutes);
 // app.use('/api/users', userRoutes);
 
 
 // Global error handler2
-// app.use(errorHandler);
+app.use(errorHandler);
 
 
 const PORT = process.env.PORT || 5000;
